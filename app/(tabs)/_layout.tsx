@@ -14,6 +14,10 @@ export default function RootLayout() {
                     fontWeight: "bold",
                 },
                 headerTitleAlign: "center",
+                tabBarStyle: {
+                    backgroundColor: "#0C0F14",
+                },
+                tabBarActiveTintColor: "#E09F28",
             }}
         >
             <Tabs.Screen
