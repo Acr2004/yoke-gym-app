@@ -4,8 +4,10 @@ import { Search, ChevronRight, Dumbbell, Plus, Filter, Star, Clock, TrendingUp }
 import { Exercise, getAllExercises } from "@/api/exercises";
 import { Colors } from "@/constants/Colors";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router, useLocalSearchParams } from "expo-router";
 
 export default function LibraryScreen() {
+    const { favoriteUpdated } = useLocalSearchParams();
     const [searchQuery, setSearchQuery] = useState("");
     // Loading
     const [page, setPage] = useState(1);
@@ -57,7 +59,7 @@ export default function LibraryScreen() {
         };
     
         loadFavorites();
-    }, []);
+    }, [favoriteUpdated]);
 
     // Save Favorites to Async Storage
     useEffect(() => {
@@ -197,7 +199,12 @@ export default function LibraryScreen() {
                         onChangeText={setSearchQuery}
                     />
                 </View>
-                <TouchableOpacity style={styles.filterButton}>
+                <TouchableOpacity 
+                    style={styles.filterButton}
+                    accessibilityRole="button"
+                    accessibilityLabel="Filter exercises"
+                    accessibilityHint="Opens exercise filter options"
+                >
                     <Filter size={20} color={Colors.dark.primary} />
                 </TouchableOpacity>
             </View>
@@ -213,6 +220,9 @@ export default function LibraryScreen() {
                         key={index}
                         style={styles.categoryItem}
                         onPress={() => handleClickFastFilter(category.name)}
+                        accessibilityRole="button"
+                        accessibilityLabel={`${category.name} filter`}
+                        accessibilityHint={`Shows ${category.name.toLowerCase()} exercises`}
                     >
                         <category.icon size={24} color={Colors.dark.primary} />
                         <Text style={styles.categoryName}>{category.name}</Text>
@@ -226,18 +236,36 @@ export default function LibraryScreen() {
                 <View style={styles.exercisesTopContainer}>
                     <Text style={styles.sectionTitle}>Exercises</Text>
                     {/* Add Exercise Button */}
-                    <TouchableOpacity style={styles.addButton}>
+                    <TouchableOpacity 
+                        style={styles.addButton}
+                        accessibilityRole="button"
+                        accessibilityLabel="Add new exercise"
+                        accessibilityHint="Creates a new custom exercise"
+                    >
                         <Plus size={16} color={Colors.dark.white} />
                     </TouchableOpacity>
                 </View>
 
                 {/* Exercises */}
                 {displayedExercises.map((exercise) => (
-                    <TouchableOpacity key={exercise.id} style={styles.exerciseItem}>
+                    <TouchableOpacity 
+                        key={exercise.id} 
+                        style={styles.exerciseItem}
+                        onPress={() => router.push(`/exercise/${exercise.id}`)}
+                        accessibilityRole="button"
+                        accessibilityLabel={`${exercise.name} exercise details`}
+                        accessibilityHint={`View details for ${exercise.name}`}
+                    >
                         {/* Favorite Icon */}
                         <TouchableOpacity
-                            onPress={() => toggleFavorite(exercise.name)}
+                            onPress={(e) => {
+                                e.stopPropagation();
+                                toggleFavorite(exercise.name);
+                            }}
                             style={styles.favoriteButton}
+                            accessibilityRole="button"
+                            accessibilityLabel={favoritedExercises.has(exercise.name) ? "Remove from favorites" : "Add to favorites"}
+                            accessibilityHint={favoritedExercises.has(exercise.name) ? `Removes ${exercise.name} from favorites` : `Adds ${exercise.name} to favorites`}
                         >
                             <Star
                                 size={20}
