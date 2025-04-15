@@ -10,15 +10,18 @@ export default function LibraryScreen() {
     const [allLoaded, setAllLoaded] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [displayedExercises, setDisplayedExercises] = useState<Exercise[]>([]);
+    const [favoritedExercises, setFavoritedExercises] = useState<Set<string>>(new Set());
     const scrollViewRef = useRef(null);
 
+    // Fast Filters
     const categories = [
         { name: "All Exercises", count: displayedExercises.length, icon: Dumbbell },
-        { name: "Favorites", count: 12, icon: Star },
+        { name: "Favorites", count: favoritedExercises.size, icon: Star },
         { name: "Recent", count: 8, icon: Clock },
         { name: "Popular", count: 24, icon: TrendingUp },
     ];
 
+    // Get first 50 Exercises from the List
     useEffect(() => {
         const exercises = getAllExercises();
 
@@ -33,6 +36,7 @@ export default function LibraryScreen() {
         }
     }, []);
 
+    // Load more 50 Exercises from the List
     const loadMoreExercises = () => {
         if(isLoadingMore || allLoaded) return;
 
@@ -54,6 +58,7 @@ export default function LibraryScreen() {
         }, 1);
     };
 
+    // Check if User scrolls to load more Exercises
     const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
         const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
         const paddingToBottom = 300;
@@ -61,6 +66,19 @@ export default function LibraryScreen() {
         if(layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom - (layoutMeasurement.height * 0.2)) {
             loadMoreExercises();
         }
+    };
+
+    // Toggle Favorite Exercise
+    const toggleFavorite = (exerciseId: string) => {
+        setFavoritedExercises(prev => {
+            const newFavorites = new Set(prev);
+            if (newFavorites.has(exerciseId)) {
+                newFavorites.delete(exerciseId);
+            } else {
+                newFavorites.add(exerciseId);
+            }
+            return newFavorites;
+        });
     };
 
     return (
@@ -115,6 +133,18 @@ export default function LibraryScreen() {
                 {/* Exercises */}
                 {displayedExercises.map((exercise, index) => (
                     <TouchableOpacity key={index} style={styles.exerciseItem}>
+                        {/* Favorite Icon */}
+                        <TouchableOpacity
+                            onPress={() => toggleFavorite(exercise.name)}
+                            style={styles.favoriteButton}
+                        >
+                            <Star
+                                size={20}
+                                color={Colors.dark.primary}
+                                fill={favoritedExercises.has(exercise.name) ? Colors.dark.primary : 'transparent'}
+                            />
+                        </TouchableOpacity>
+
                         <View style={styles.exerciseInfo}>
                             <Text style={styles.exerciseName}>{exercise.name}</Text>
                             <View style={styles.exerciseTags}>
@@ -230,6 +260,7 @@ const styles = StyleSheet.create({
     exerciseInfo: {
         flex: 1,
         marginRight: 12,
+        marginLeft: 8,
     },
     exerciseName: {
         color: Colors.dark.white,
@@ -255,5 +286,12 @@ const styles = StyleSheet.create({
     exerciseDescription: {
         color: Colors.dark.text,
         fontSize: 14,
+    },
+    favoriteButton: {
+        paddingHorizontal: 8,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        height: "100%",
     },
 });
