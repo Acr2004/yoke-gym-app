@@ -3,27 +3,102 @@ import { useEffect, useRef, useState } from "react";
 import { Search, ChevronRight, Dumbbell, Plus, Filter, Star, Clock, TrendingUp } from "lucide-react-native";
 import { Exercise, getAllExercises } from "@/api/exercises";
 import { Colors } from "@/constants/Colors";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function LibraryScreen() {
     const [searchQuery, setSearchQuery] = useState("");
+    // Loading
     const [page, setPage] = useState(1);
     const [allLoaded, setAllLoaded] = useState(false);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const scrollViewRef = useRef(null);
+    // Exercises
     const [displayedExercises, setDisplayedExercises] = useState<Exercise[]>([]);
     const [favoritedExercises, setFavoritedExercises] = useState<Set<string>>(new Set());
-    const scrollViewRef = useRef(null);
+    // Filters
+    const [activeFastFilter, setActiveFastFilter] = useState<"all" | "favorites" | "recents" | "populars">("all");
+
 
     // Fast Filters
     const categories = [
-        { name: "All Exercises", count: displayedExercises.length, icon: Dumbbell },
+        { name: "All Exercises", count: 554, icon: Dumbbell },
         { name: "Favorites", count: favoritedExercises.size, icon: Star },
         { name: "Recent", count: 8, icon: Clock },
         { name: "Popular", count: 24, icon: TrendingUp },
     ];
 
-    // Get first 50 Exercises from the List
+    function handleClickFastFilter(categoryName: string) {
+        switch (categoryName) {
+            case "Favorites":
+                setActiveFastFilter("favorites");
+                break;
+            case "Recent":
+                setActiveFastFilter("recents");
+                break;
+            case "Popular":
+                setActiveFastFilter("populars");
+                break;
+            default:
+                setActiveFastFilter("all");
+        }
+    }    
+
+    // Load Favorites from AsyncStorage
     useEffect(() => {
-        const exercises = getAllExercises();
+        const loadFavorites = async () => {
+            try {
+                const storedFavorites = await AsyncStorage.getItem("@yoke-favoritedExercises");
+                if (storedFavorites) {
+                    setFavoritedExercises(new Set(JSON.parse(storedFavorites)));
+                }
+            } catch (error) {
+                console.error("Failed to load favorites:", error);
+            }
+        };
+    
+        loadFavorites();
+    }, []);
+
+    // Save Favorites to Async Storage
+    useEffect(() => {
+        const saveFavorites = async () => {
+            try {
+                const favoritesArray = Array.from(favoritedExercises);
+                await AsyncStorage.setItem("@yoke-favoritedExercises", JSON.stringify(favoritesArray));
+            } catch (error) {
+                console.error("Failed to save favorites:", error);
+            }
+        };
+    
+        saveFavorites();
+    }, [favoritedExercises]);    
+
+    // Get first 50 Filtered Exercises from the List
+    useEffect(() => {
+        let exercises = getAllExercises();
+
+        // Check Fast Filters
+        switch (activeFastFilter) {
+            case "favorites":
+                exercises = exercises.filter(ex => favoritedExercises.has(ex.name));
+                break;
+            case "recents":
+                // Aplica a lógica de exercícios recentes
+                break;
+            case "populars":
+                // Aplica a lógica de exercícios populares
+                break;
+            default:
+                break;
+        }
+
+        // Search Query
+        if (searchQuery.trim()) {
+            const query = searchQuery.toLowerCase();
+            exercises = exercises.filter((exercise) => exercise.name.toLowerCase().includes(query));
+        }
+
+        exercises.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
         setPage(1);
         setAllLoaded(false);
@@ -34,7 +109,7 @@ export default function LibraryScreen() {
         if(initialExercises.length >= exercises.length) {
             setAllLoaded(true);
         }
-    }, []);
+    }, [activeFastFilter, favoritedExercises, searchQuery]);
 
     // Load more 50 Exercises from the List
     const loadMoreExercises = () => {
@@ -43,7 +118,29 @@ export default function LibraryScreen() {
         setIsLoadingMore(true);
 
         setTimeout(() => {
-            const exercises = getAllExercises();
+            let exercises = getAllExercises();
+
+            switch (activeFastFilter) {
+                case "favorites":
+                    exercises = exercises.filter(ex => favoritedExercises.has(ex.name));
+                    break;
+                case "recents":
+                    // TODO RECENTS
+                    break;
+                case "populars":
+                    // TODO POPULARS
+                    break;
+                default:
+                    break;
+            }
+    
+            if (searchQuery.trim()) {
+                const query = searchQuery.toLowerCase();
+                exercises = exercises.filter((exercise) => exercise.name.toLowerCase().includes(query));
+            }
+
+            exercises.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+
             const endIndex = (page + 1) * 50
             const newExercises = exercises.slice(0, endIndex);
 
@@ -69,13 +166,13 @@ export default function LibraryScreen() {
     };
 
     // Toggle Favorite Exercise
-    const toggleFavorite = (exerciseId: string) => {
+    const toggleFavorite = (exerciseName: string) => {
         setFavoritedExercises(prev => {
             const newFavorites = new Set(prev);
-            if (newFavorites.has(exerciseId)) {
-                newFavorites.delete(exerciseId);
+            if (newFavorites.has(exerciseName)) {
+                newFavorites.delete(exerciseName);
             } else {
-                newFavorites.add(exerciseId);
+                newFavorites.add(exerciseName);
             }
             return newFavorites;
         });
@@ -112,7 +209,11 @@ export default function LibraryScreen() {
                 style={styles.categoriesContainer}
             >
                 {categories.map((category, index) => (
-                    <TouchableOpacity key={index} style={styles.categoryItem}>
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.categoryItem}
+                        onPress={() => handleClickFastFilter(category.name)}
+                    >
                         <category.icon size={24} color={Colors.dark.primary} />
                         <Text style={styles.categoryName}>{category.name}</Text>
                         <Text style={styles.categoryCount}>{category.count}</Text>
@@ -131,8 +232,8 @@ export default function LibraryScreen() {
                 </View>
 
                 {/* Exercises */}
-                {displayedExercises.map((exercise, index) => (
-                    <TouchableOpacity key={index} style={styles.exerciseItem}>
+                {displayedExercises.map((exercise) => (
+                    <TouchableOpacity key={exercise.id} style={styles.exerciseItem}>
                         {/* Favorite Icon */}
                         <TouchableOpacity
                             onPress={() => toggleFavorite(exercise.name)}

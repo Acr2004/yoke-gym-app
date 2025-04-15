@@ -6549,19 +6549,19 @@
     "bodyPart": "shoulders",
     "equipment": "resistance band",
     "id": 328,
-    "name": "Band Face Pull",
+    "name": "Band Reverse Fly",
     "target": "posterior deltoids",
-    "secondaryMuscles": ["rhomboids", "middle traps", "rotator cuff"],
+    "secondaryMuscles": ["rhomboids", "trapezius"],
     "instructions": [
-      "Anchor resistance band at chest/head height.",
-      "Grip band, step back.",
-      "Pull band towards face, elbows high and wide, externally rotate.",
-      "Squeeze upper back.",
-      "Return slowly.",
+      "Hold resistance band handles with both hands.",
+      "Extend arms straight in front at shoulder height, palms facing each other.",
+      "With a slight bend in elbows, pull arms out to sides, squeezing shoulder blades.",
+      "Pause briefly at the end of the movement.",
+      "Return to starting position with control.",
       "Repeat."
     ],
     "difficulty": "beginner",
-    "description": "Face pulls using a resistance band."
+    "description": "A resistance band reverse fly to target rear delts and upper back muscles."
   },
   {
     "bodyPart": "upper back",
@@ -9713,7 +9713,7 @@
     "description": "Utilizing a sandbag for various compound movements like carries, cleans, and squats, challenging grip and stability due to the shifting load."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "treadmill",
     "id": 481,
     "name": "Steady State Running",
@@ -9735,7 +9735,7 @@
     "description": "Running at a sustained, manageable pace for an extended duration to build aerobic capacity."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 482,
     "name": "Jogging",
@@ -9757,7 +9757,7 @@
     "description": "A low-intensity form of running performed at a relaxed, conversational pace."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 483,
     "name": "Sprinting",
@@ -9781,7 +9781,7 @@
     "description": "Running at maximal effort for short durations with full recovery to improve speed and anaerobic fitness."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 484,
     "name": "Interval Running",
@@ -9803,7 +9803,7 @@
     "description": "Alternating between periods of faster running and slower recovery periods to improve cardiovascular fitness."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "bicycle",
     "id": 485,
     "name": "Steady State Cycling",
@@ -9820,7 +9820,7 @@
     "description": "Cycling at a sustained, manageable intensity for an extended duration to build aerobic fitness."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "stationary bike",
     "id": 486,
     "name": "Interval Cycling",
@@ -9836,7 +9836,7 @@
     "description": "Alternating periods of high-intensity effort with recovery periods on a stationary bike."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "pool",
     "id": 487,
     "name": "Swimming Laps",
@@ -9859,7 +9859,7 @@
     "description": "A full-body, low-impact cardiovascular exercise involving swimming continuous laps in a pool."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "pool",
     "id": 488,
     "name": "Interval Swimming",
@@ -9882,7 +9882,7 @@
     "description": "Alternating between periods of high-intensity swimming and recovery periods."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "rowing machine",
     "id": 489,
     "name": "Steady State Rowing",
@@ -9906,7 +9906,7 @@
     "description": "Rowing at a sustained, manageable pace on a machine for aerobic fitness and full-body conditioning."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "rowing machine",
     "id": 490,
     "name": "Interval Rowing",
@@ -9929,7 +9929,7 @@
     "description": "Alternating between high-intensity rowing efforts and recovery periods on a machine."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "elliptical machine",
     "id": 491,
     "name": "Elliptical Training",
@@ -9953,7 +9953,7 @@
     "description": "A low-impact cardiovascular exercise machine simulating running or stair climbing motion."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "stair climber machine",
     "id": 492,
     "name": "Stair Climbing",
@@ -9976,7 +9976,7 @@
     "description": "Simulating the action of climbing stairs on a machine for cardiovascular and lower body endurance."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "jump rope",
     "id": 493,
     "name": "Jump Rope / Skipping",
@@ -9990,11 +9990,11 @@
       "Variations: Basic bounce (small hop), Alternate foot, High knees, Butt kicks, Double unders (two rotations per jump), Crossovers.",
       "Perform continuously for time or intervals."
     ],
-    "difficulty": "beginner (basic) / advanced (double unders)",
+    "difficulty": "intermediate",
     "description": "A high-impact cardio exercise using a rope, improving coordination, agility, and conditioning."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "heavy bag",
     "id": 494,
     "name": "Boxing Training",
@@ -10016,7 +10016,7 @@
     "description": "Cardiovascular and skill-based workout using boxing movements (shadow or on heavy bag)."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "heavy bag",
     "id": 495,
     "name": "Kickboxing Training",
@@ -10058,7 +10058,7 @@
     "description": "Performing multiple exercises sequentially with minimal rest between them to challenge strength and cardio."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "various",
     "id": 497,
     "name": "High-Intensity Interval Training (HIIT)",
@@ -10075,7 +10075,7 @@
     "description": "A training method alternating short bursts of intense anaerobic exercise with brief recovery periods."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "various",
     "id": 498,
     "name": "Tabata Training",
@@ -10092,7 +10092,7 @@
     "description": "A specific type of HIIT involving 8 rounds of 20 seconds work followed by 10 seconds rest."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "backpack",
     "id": 499,
     "name": "Hiking / Rucking",
@@ -10116,7 +10116,7 @@
     "description": "Walking outdoors on varied terrain, optionally with a weighted backpack (rucking), for endurance."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 500,
     "name": "Jumping Jacks",
@@ -10133,7 +10133,7 @@
     "description": "A fundamental full-body calisthenic exercise used for warm-ups and cardiovascular conditioning."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 501,
     "name": "High Knees (Cardio Pace)",
@@ -10151,7 +10151,7 @@
     "description": "Running in place while lifting the knees high, performed at a pace suitable for cardiovascular training."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 502,
     "name": "Butt Kicks (Cardio Pace)",
@@ -10170,7 +10170,7 @@
     "description": "Jogging in place while actively kicking the heels towards the glutes, performed at a cardio pace."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 503,
     "name": "Mountain Climbers (Cardio Pace)",
@@ -10188,7 +10188,7 @@
     "description": "Performing the mountain climber exercise at a sustained, rapid pace for cardiovascular benefits."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 504,
     "name": "Burpees (Cardio Focus)",
@@ -10208,7 +10208,7 @@
     "description": "Using the burpee exercise primarily for cardiovascular conditioning by performing reps continuously at pace."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "body weight",
     "id": 505,
     "name": "Skipping (Movement)",
@@ -10226,7 +10226,7 @@
     "description": "A locomotor skill involving a step-hop pattern, used for warm-ups, light cardio, and coordination."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "VersaClimber machine",
     "id": 506,
     "name": "VersaClimber",
@@ -10244,7 +10244,7 @@
     "description": "A low-impact machine simulating climbing, offering a challenging full-body cardiovascular workout."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "SkiErg machine",
     "id": 507,
     "name": "SkiErg",
@@ -10264,7 +10264,7 @@
     "description": "A machine simulating Nordic skiing's poling motion, emphasizing upper body, core, and cardiovascular endurance."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "air bike",
     "id": 508,
     "name": "Air Bike / Assault Bike",
@@ -10282,7 +10282,7 @@
     "description": "A high-intensity conditioning tool using fan resistance, engaging both upper and lower body simultaneously."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "battle rope",
     "id": 509,
     "name": "Battle Ropes",
@@ -10303,7 +10303,7 @@
     "description": "A conditioning tool using heavy ropes manipulated in various patterns to challenge cardio and muscular endurance."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "agility ladder",
     "id": 510,
     "name": "Agility Ladder Drills",
@@ -10323,7 +10323,7 @@
     "description": "Drills performed using an agility ladder to enhance foot speed, coordination, agility, and cardiovascular fitness when done at pace."
   },
   {
-    "bodyPart": "cardiovascular system",
+    "bodyPart": "cardio",
     "equipment": "cones",
     "id": 511,
     "name": "Cone Drills",
@@ -10701,424 +10701,6 @@
     ],
     "difficulty": "intermediate",
     "description": "Using the leverage of a long-handled implement like a sledgehammer or macebell to strengthen the wrists through controlled deviation movements."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "resistance band",
-    "id": 533,
-    "name": "Band Pull-Apart (Variations)",
-    "target": "rhomboids",
-    "secondaryMuscles": ["posterior deltoids", "middle traps", "rotator cuff"],
-    "instructions": [
-      "Hold a resistance band with hands shoulder-width apart or slightly wider.",
-      "Extend arms straight in front at chest height.",
-      "Keep elbows slightly bent.",
-      "Pull the band apart horizontally by squeezing your shoulder blades together.",
-      "Overhand Grip: Palms face down.",
-      "Underhand Grip: Palms face up (emphasizes external rotation).",
-      "Diagonal: Pull band from high-to-low or low-to-high across the body.",
-      "Return slowly to the starting position under control.",
-      "Focus on initiating movement from the upper back.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "An exercise using a resistance band to strengthen upper back posture muscles, performable with various grips/angles."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "resistance band",
-    "id": 534,
-    "name": "Banded Face Pull",
-    "target": "posterior deltoids",
-    "secondaryMuscles": ["rhomboids", "middle traps", "rotator cuff"],
-    "instructions": [
-      "Anchor a resistance band at chest or head height.",
-      "Grip the band with both hands (palms facing each other or down).",
-      "Step back to create tension.",
-      "Pull the band towards your face, aiming hands towards ears/temples.",
-      "Drive elbows back and high, externally rotating shoulders.",
-      "Squeeze upper back and rear deltoids.",
-      "Return slowly under control.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "Using a resistance band to perform face pulls, targeting rear deltoids and external rotators for shoulder health."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "body weight",
-    "id": 535,
-    "name": "YTWL Shoulder Exercise",
-    "target": "scapular stabilizers",
-    "secondaryMuscles": ["traps", "rhomboids", "rotator cuff"],
-    "instructions": [
-      "Lie face down on the floor or an incline bench, or stand hinged at hips with flat back.",
-      "Optionally hold very light dumbbells.",
-      "Y: Extend arms diagonally overhead (thumbs up) forming a Y shape. Lift arms by squeezing upper back. Lower.",
-      "T: Extend arms straight out to sides (thumbs up) forming a T shape. Lift arms by squeezing shoulder blades. Lower.",
-      "W: Bend elbows, bringing hands near shoulders (thumbs up), forming a W shape. Lift elbows/hands by retracting shoulder blades. Lower.",
-      "L: Keep elbows bent at 90 degrees, upper arms parallel to floor (if prone/inclined). Externally rotate shoulders, lifting forearms/hands. Lower.",
-      "Perform each letter shape for reps, focusing on controlled movement and muscle activation."
-    ],
-    "difficulty": "beginner",
-    "description": "A series of movements (Y, T, W, L shapes) targeting various upper back and rotator cuff muscles for shoulder stability."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "resistance band",
-    "id": 536,
-    "name": "External Rotation (Band/Cable - Elbow Tucked)",
-    "target": "rotator cuff",
-    "secondaryMuscles": ["posterior deltoids"],
-    "instructions": [
-      "Anchor a resistance band or set cable pulley at elbow height.",
-      "Stand sideways to the anchor point.",
-      "Hold the band/handle with the hand furthest from the anchor.",
-      "Keep elbow tucked firmly into your side at a 90-degree bend.",
-      "Keeping elbow pinned, rotate your forearm outwards away from your body against the resistance.",
-      "Focus on rotation at the shoulder joint.",
-      "Move slowly and control the return.",
-      "Complete reps, then switch sides.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "An exercise strengthening the external rotator cuff muscles with the elbow kept tucked at the side."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "dumbbell",
-    "id": 537,
-    "name": "External Rotation (Side Lying)",
-    "target": "rotator cuff",
-    "secondaryMuscles": ["posterior deltoids"],
-    "instructions": [
-      "Lie on your side, head supported.",
-      "Hold a light dumbbell in your top hand.",
-      "Keep the elbow of the top arm bent at 90 degrees and tucked against your side.",
-      "Keeping elbow pinned, rotate your forearm upwards towards the ceiling.",
-      "Focus on rotation at the shoulder.",
-      "Lower the dumbbell slowly back down.",
-      "Complete reps, then switch sides.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "Strengthening the external rotator cuff muscles using a light dumbbell while lying on the side."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "resistance band",
-    "id": 538,
-    "name": "Internal Rotation (Band/Cable - Elbow Tucked)",
-    "target": "rotator cuff",
-    "secondaryMuscles": ["subscapularis", "pectoralis major"],
-    "instructions": [
-      "Anchor a resistance band or set cable pulley at elbow height.",
-      "Stand sideways to the anchor point.",
-      "Hold the band/handle with the hand closest to the anchor.",
-      "Keep elbow tucked firmly into your side at a 90-degree bend, forearm starting outwards.",
-      "Keeping elbow pinned, rotate your forearm inwards across your body against the resistance.",
-      "Focus on internal rotation at the shoulder.",
-      "Move slowly and control the return.",
-      "Complete reps, then switch sides.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "An exercise strengthening the internal rotator cuff muscles (subscapularis) with the elbow kept tucked."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "body weight",
-    "id": 539,
-    "name": "Scapular Retractions",
-    "target": "rhomboids",
-    "secondaryMuscles": ["middle traps"],
-    "instructions": [
-      "Standing/Seated: Sit or stand tall, arms relaxed or extended forward.",
-      "Squeeze your shoulder blades together as if trying to pinch something between them.",
-      "Hold the retraction briefly.",
-      "Relax and allow shoulder blades to return to neutral.",
-      "Prone: Lie face down, arms by sides or in T-shape. Lift arms slightly and squeeze shoulder blades together. Lower.",
-      "Focus on isolating scapular movement.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "Isolating the movement of pulling the shoulder blades together (retraction) to activate mid-back muscles."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "body weight",
-    "id": 540,
-    "name": "Scapular Protraction (Scap Push-ups)",
-    "target": "serratus anterior",
-    "secondaryMuscles": ["pectorals"],
-    "instructions": [
-      "Start in a high plank or hands-and-knees position.",
-      "Keep arms straight throughout.",
-      "Allow chest to sink towards floor, squeezing shoulder blades together (retraction).",
-      "Push through hands, rounding upper back slightly and spreading shoulder blades apart (protraction).",
-      "Focus only on shoulder blade movement.",
-      "Repeat the retraction and protraction."
-    ],
-    "difficulty": "beginner",
-    "description": "Isolating shoulder blade protraction (spreading apart) and retraction, often targeting the serratus anterior."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "pull-up bar",
-    "id": 541,
-    "name": "Scapular Depression (Scap Pull-ups)",
-    "target": "lower traps",
-    "secondaryMuscles": ["lats", "rhomboids"],
-    "instructions": [
-      "Hang from pull-up bar, arms straight (dead hang, shoulders elevated).",
-      "Keeping arms straight, pull shoulder blades down and back (depression).",
-      "Body lifts slightly.",
-      "Hold depressed position.",
-      "Relax back into dead hang.",
-      "Focus only on shoulder blade movement.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "Isolating shoulder blade depression (pulling down) while hanging, activating lower traps."
-  },
-  {
-    "bodyPart": "neck",
-    "equipment": "body weight",
-    "id": 542,
-    "name": "Chin Tucks",
-    "target": "deep neck flexors",
-    "secondaryMuscles": [],
-    "instructions": [
-      "Sit or stand tall against a wall, or lie flat on back.",
-      "Gently tuck your chin towards your throat, as if making a double chin.",
-      "Keep gaze level, don't nod head down.",
-      "Feel a slight stretch at back of neck and activation in front.",
-      "Hold briefly (e.g., 5 seconds).",
-      "Relax.",
-      "Avoid forcefully jamming chin down.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "A subtle exercise to activate the deep neck flexor muscles, improving posture and reducing neck strain."
-  },
-  {
-    "bodyPart": "neck",
-    "equipment": "body weight",
-    "id": 543,
-    "name": "Deep Neck Flexor Activation",
-    "target": "deep neck flexors",
-    "secondaryMuscles": [],
-    "instructions": [
-      "Lie flat on your back without a pillow.",
-      "Perform a very gentle chin tuck (as described in ID 542).",
-      "While maintaining the tuck, lift your head *very slightly* (just enough to slide paper underneath) off the floor.",
-      "Focus on feeling the muscles deep in the front of your neck working.",
-      "Hold for 5-10 seconds.",
-      "Lower slowly.",
-      "Avoid letting superficial neck muscles (SCM) bulge out.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "A specific activation exercise for the deep neck flexors involving a slight head lift while chin is tucked."
-  },
-  {
-    "bodyPart": "hips",
-    "equipment": "body weight",
-    "id": 544,
-    "name": "Hip Flexor Stretch (Variations)",
-    "target": "hip flexors",
-    "secondaryMuscles": ["quadriceps"],
-    "instructions": [
-      "Kneeling: Kneel on one knee, other foot forward. Tuck tailbone, gently shift hips forward. Feel stretch in front of kneeling hip.",
-      "Standing: Stand tall, step one foot back into slight lunge. Tuck tailbone, bend front knee slightly. Feel stretch in back leg hip flexor.",
-      "Couch Stretch: Kneel facing away from wall/couch, back shin/foot against surface. Step front foot forward. Keep torso upright. Intense stretch.",
-      "Hold chosen stretch for desired duration.",
-      "Switch sides."
-    ],
-    "difficulty": "beginner",
-    "description": "Stretching the muscles at the front of the hip, important for posture and mobility. Includes kneeling, standing, and couch variations."
-  },
-  {
-    "bodyPart": "hips",
-    "equipment": "body weight",
-    "id": 545,
-    "name": "Piriformis Stretch (Variations)",
-    "target": "piriformis",
-    "secondaryMuscles": ["glutes", "hip external rotators"],
-    "instructions": [
-      "Figure Four (Lying): Lie on back, knees bent. Cross one ankle over opposite thigh. Pull thigh towards chest.",
-      "Figure Four (Seated): Sit tall. Cross ankle over opposite thigh. Gently press knee down or lean forward.",
-      "Seated Twist: Sit legs extended. Bend right knee, place foot outside left knee. Twist torso right, use left elbow outside right knee.",
-      "Hold chosen stretch for desired duration.",
-      "Switch sides."
-    ],
-    "difficulty": "beginner",
-    "description": "Stretches targeting the deep piriformis muscle in the hip, often associated with glute tightness or sciatic-like symptoms."
-  },
-  {
-    "bodyPart": "glutes",
-    "equipment": "body weight",
-    "id": 546,
-    "name": "Glute Activation Drills",
-    "target": "glutes",
-    "secondaryMuscles": ["core", "hamstrings", "hip abductors"],
-    "instructions": [
-      "Perform exercises designed to 'wake up' the glute muscles, often before a workout.",
-      "Glute Bridge: Lie on back, knees bent. Lift hips, squeeze glutes.",
-      "Clamshells: Lie on side, knees bent. Keep feet together, lift top knee.",
-      "Banded Lateral Walks: Band around ankles/knees. Step sideways in athletic stance.",
-      "Fire Hydrants: Hands and knees. Lift bent knee out to side.",
-      "Donkey Kicks: Hands and knees. Kick one heel towards ceiling.",
-      "Focus on feeling the glute muscles contract.",
-      "Perform controlled reps."
-    ],
-    "difficulty": "beginner",
-    "description": "A set of exercises like bridges, clamshells, and band walks used to improve glute muscle firing patterns."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "wall",
-    "id": 547,
-    "name": "Wall Slides / Wall Angels",
-    "target": "scapular mobility",
-    "secondaryMuscles": ["rotator cuff", "upper back"],
-    "instructions": [
-      "Stand with back against wall, feet slightly away.",
-      "Maintain contact with lower back, upper back, and head.",
-      "Bend elbows 90 degrees, raise arms so upper arms parallel to floor.",
-      "Press forearms and back of hands against wall.",
-      "Slowly slide arms upwards along wall, maintaining contact points.",
-      "Go as high as possible without losing contact or arching lower back.",
-      "Slowly slide arms back down.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "An exercise against a wall to improve shoulder mobility, external rotation, and scapular control."
-  },
-  {
-    "bodyPart": "upper back",
-    "equipment": "body weight",
-    "id": 548,
-    "name": "Blackburns",
-    "target": "scapular stabilizers",
-    "secondaryMuscles": [
-      "traps",
-      "rhomboids",
-      "rotator cuff",
-      "posterior deltoids"
-    ],
-    "instructions": [
-      "Lie face down on the floor, forehead resting lightly.",
-      "Sequence (Perform each step slowly for reps):",
-      "1. Arms straight by sides, palms down. Lift arms slightly, retract shoulder blades.",
-      "2. Move arms out to T-position, thumbs up. Lift arms, retract.",
-      "3. Move arms to Y-position, thumbs up. Lift arms, retract.",
-      "4. Bend elbows, bring hands near head (W-position), thumbs up. Lift arms, retract.",
-      "5. Can flow through sequence or perform reps at each position."
-    ],
-    "difficulty": "beginner",
-    "description": "A prone exercise sequence involving various arm positions to strengthen the scapular retractors and rotator cuff."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "dumbbell",
-    "id": 549,
-    "name": "Powell Raise",
-    "target": "rotator cuff",
-    "secondaryMuscles": ["posterior deltoids"],
-    "instructions": [
-      "Lie on your side on a flat or incline bench, body angled slightly forward (around 30 degrees).",
-      "Hold a very light dumbbell in your top hand.",
-      "Let the arm hang down across your body.",
-      "Keeping elbow slightly bent, raise the dumbbell upwards and slightly backwards in an arc.",
-      "Focus on using the muscles at the back of the shoulder.",
-      "Movement happens primarily at the shoulder joint.",
-      "Lower slowly under control.",
-      "Complete reps, then switch sides.",
-      "Repeat."
-    ],
-    "difficulty": "intermediate",
-    "description": "A side-lying shoulder exercise targeting the posterior rotator cuff and deltoid, often used for shoulder health."
-  },
-  {
-    "bodyPart": "shoulders",
-    "equipment": "dumbbell",
-    "id": 550,
-    "name": "Cuban Press",
-    "target": "rotator cuff",
-    "secondaryMuscles": ["deltoids", "traps"],
-    "instructions": [
-      "Stand or sit holding very light dumbbells.",
-      "Perform an upright row motion, pulling dumbbells up towards shoulders, elbows high.",
-      "At the top of the row, externally rotate shoulders, bringing dumbbells up so forearms are vertical.",
-      "Press the dumbbells overhead.",
-      "Reverse the motion: Lower to external rotation position, internally rotate back to upright row top position, lower dumbbells down.",
-      "Perform slowly and with control, focusing on rotation.",
-      "Repeat."
-    ],
-    "difficulty": "intermediate",
-    "description": "A multi-part exercise combining an upright row, external rotation, and overhead press to improve shoulder mobility and rotator cuff strength."
-  },
-  {
-    "bodyPart": "back",
-    "equipment": "foam roller",
-    "id": 551,
-    "name": "Thoracic Extension over Foam Roller",
-    "target": "thoracic spine mobility",
-    "secondaryMuscles": ["upper back"],
-    "instructions": [
-      "Lie on your back with a foam roller positioned horizontally across your mid/upper back.",
-      "Bend knees, feet flat on floor.",
-      "Support your head with your hands (interlace fingers behind head).",
-      "Keep hips on the floor or slightly lifted.",
-      "Gently arch your upper back over the roller, extending your thoracic spine.",
-      "Support your head throughout.",
-      "Hold the gentle extension or perform small movements.",
-      "Can slightly shift roller position up or down the upper back.",
-      "Breathe deeply."
-    ],
-    "difficulty": "beginner",
-    "description": "Using a foam roller to improve extension mobility in the upper/mid back (thoracic spine)."
-  },
-  {
-    "bodyPart": "spine",
-    "equipment": "body weight",
-    "id": 552,
-    "name": "Cat-Cow",
-    "target": "spinal mobility",
-    "secondaryMuscles": ["core", "neck", "shoulders"],
-    "instructions": [
-      "Start on hands and knees, hands under shoulders, knees under hips.",
-      "Inhale: Drop belly, arch back, lift head and tailbone (Cow Pose).",
-      "Exhale: Round spine towards ceiling, tuck chin and tailbone (Cat Pose).",
-      "Flow smoothly between poses, coordinating with breath.",
-      "Focus on articulating through the entire spine.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "A yoga pose involving flexing and extending the spine to improve mobility and relieve tension."
-  },
-  {
-    "bodyPart": "core",
-    "equipment": "body weight",
-    "id": 553,
-    "name": "Bird Dog (Stability Focus)",
-    "target": "core stabilizers",
-    "secondaryMuscles": ["glutes", "erector spinae", "shoulders"],
-    "instructions": [
-      "Start on hands and knees, neutral spine, core engaged.",
-      "Slowly extend opposite arm and leg simultaneously.",
-      "Focus intensely on preventing any movement or rotation in the torso and pelvis.",
-      "Keep hips and shoulders perfectly square to the floor.",
-      "Reach long.",
-      "Hold briefly, maintaining tension and stability.",
-      "Return slowly to start.",
-      "Alternate sides.",
-      "Emphasis is on control and stability, not speed or range.",
-      "Repeat."
-    ],
-    "difficulty": "beginner",
-    "description": "Performing the Bird Dog exercise with a primary focus on maintaining absolute core and spinal stability throughout the movement."
   },
   {
     "bodyPart": "upper back",
