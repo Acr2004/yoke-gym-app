@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { Tabs } from "expo-router";
 import { ChefHat, Dumbbell, History, LibraryBig, UserRound } from "lucide-react-native";
 
@@ -7,17 +8,22 @@ export default function RootLayout() {
             screenOptions={{
                 headerShown: true,
                 headerStyle: {
-                    backgroundColor: "#0C0F14",
+                    backgroundColor: Colors.dark.background,
+                    borderBottomWidth: 0,
                 },
                 headerTitleStyle: {
-                    color: "#E09F28",
+                    color: Colors.dark.primary,
                     fontWeight: "bold",
                 },
                 headerTitleAlign: "center",
                 tabBarStyle: {
-                    backgroundColor: "#0C0F14",
+                    backgroundColor: Colors.dark.background,
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    shadowOpacity: 0,
                 },
-                tabBarActiveTintColor: "#E09F28",
+                tabBarActiveTintColor: Colors.dark.primary,
+                tabBarHideOnKeyboard: true,
             }}
         >
             <Tabs.Screen
