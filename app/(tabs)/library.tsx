@@ -201,9 +201,6 @@ export default function LibraryScreen() {
                 </View>
                 <TouchableOpacity 
                     style={styles.filterButton}
-                    accessibilityRole="button"
-                    accessibilityLabel="Filter exercises"
-                    accessibilityHint="Opens exercise filter options"
                 >
                     <Filter size={20} color={Colors.dark.primary} />
                 </TouchableOpacity>
@@ -220,9 +217,6 @@ export default function LibraryScreen() {
                         key={index}
                         style={styles.categoryItem}
                         onPress={() => handleClickFastFilter(category.name)}
-                        accessibilityRole="button"
-                        accessibilityLabel={`${category.name} filter`}
-                        accessibilityHint={`Shows ${category.name.toLowerCase()} exercises`}
                     >
                         <category.icon size={24} color={Colors.dark.primary} />
                         <Text style={styles.categoryName}>{category.name}</Text>
@@ -238,9 +232,6 @@ export default function LibraryScreen() {
                     {/* Add Exercise Button */}
                     <TouchableOpacity 
                         style={styles.addButton}
-                        accessibilityRole="button"
-                        accessibilityLabel="Add new exercise"
-                        accessibilityHint="Creates a new custom exercise"
                     >
                         <Plus size={16} color={Colors.dark.white} />
                     </TouchableOpacity>
@@ -252,9 +243,6 @@ export default function LibraryScreen() {
                         key={exercise.id} 
                         style={styles.exerciseItem}
                         onPress={() => router.push(`/exercise/${exercise.id}`)}
-                        accessibilityRole="button"
-                        accessibilityLabel={`${exercise.name} exercise details`}
-                        accessibilityHint={`View details for ${exercise.name}`}
                     >
                         {/* Favorite Icon */}
                         <TouchableOpacity
@@ -263,9 +251,6 @@ export default function LibraryScreen() {
                                 toggleFavorite(exercise.name);
                             }}
                             style={styles.favoriteButton}
-                            accessibilityRole="button"
-                            accessibilityLabel={favoritedExercises.has(exercise.name) ? "Remove from favorites" : "Add to favorites"}
-                            accessibilityHint={favoritedExercises.has(exercise.name) ? `Removes ${exercise.name} from favorites` : `Adds ${exercise.name} to favorites`}
                         >
                             <Star
                                 size={20}

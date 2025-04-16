@@ -11,14 +11,14 @@ export default function ExerciseDetailScreen() {
     const [exercise, setExercise] = useState<Exercise | null>(null);
     const [isFavorited, setIsFavorited] = useState(false);
 
-    // Load exercise data
+    // Load Exercise Data
     useEffect(() => {
         const exercises = getAllExercises();
         const foundExercise = exercises.find(ex => ex.id === Number(id));
         setExercise(foundExercise || null);
     }, [id]);
 
-    // Load favorite status
+    // Load Favorite Status
     useEffect(() => {
         const loadFavoriteStatus = async () => {
             try {
@@ -35,7 +35,7 @@ export default function ExerciseDetailScreen() {
         loadFavoriteStatus();
     }, [exercise]);
 
-    // Toggle favorite status
+    // Toggle Favorite Status
     const toggleFavorite = async () => {
         if (!exercise) return;
 
@@ -73,45 +73,27 @@ export default function ExerciseDetailScreen() {
 
     return (
         <ScrollView style={styles.container}>
-            <Stack.Screen
-                options={{
-                    headerShown: true,
-                    headerStyle: {
-                        backgroundColor: Colors.dark.background,
-                    },
-                    headerTitleStyle: {
-                        color: Colors.dark.primary,
-                    },
-                    headerLeft: () => (
-                        <TouchableOpacity 
-                            onPress={() => router.back()}
-                            style={styles.headerButton}
-                            accessibilityRole="button"
-                            accessibilityLabel="Go back"
-                            accessibilityHint="Returns to the previous screen"
-                        >
-                            <ArrowLeft size={28} color={Colors.dark.primary} />
-                        </TouchableOpacity>
-                    ),
-                    headerRight: () => (
-                        <TouchableOpacity 
-                            onPress={toggleFavorite}
-                            style={styles.headerButton}
-                            accessibilityRole="button"
-                            accessibilityLabel={isFavorited ? "Remove from favorites" : "Add to favorites"}
-                            accessibilityHint={isFavorited ? "Removes this exercise from your favorites list" : "Adds this exercise to your favorites list"}
-                        >
-                            <Star
-                                size={28}
-                                color={Colors.dark.primary}
-                                fill={isFavorited ? Colors.dark.primary : 'transparent'}
-                            />
-                        </TouchableOpacity>
-                    ),
-                    title: "",
-                    headerShadowVisible: false,
-                }}
-            />
+            <Stack.Screen options={{ headerShown: false }} />
+
+            <View style={styles.topBar}>
+                <TouchableOpacity 
+                    onPress={() => router.back()}
+                    style={styles.headerButton}
+                >
+                    <ArrowLeft size={28} color={Colors.dark.primary} />
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                    onPress={toggleFavorite}
+                    style={styles.headerButton}
+                >
+                    <Star
+                        size={28}
+                        color={Colors.dark.primary}
+                        fill={isFavorited ? Colors.dark.primary : 'transparent'}
+                    />
+                </TouchableOpacity>
+            </View>
 
             {/* Main Content */}
             <View style={styles.content}>
@@ -185,11 +167,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.dark.background,
     },
+    topBar: {
+        marginTop: 40,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     content: {
         padding: 20,
     },
     headerButton: {
-        padding: 12,
+        padding: 16,
     },
     errorText: {
         color: Colors.dark.white,
