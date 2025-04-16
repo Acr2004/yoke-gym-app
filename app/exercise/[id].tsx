@@ -5,61 +5,39 @@ import { Colors } from "@/constants/Colors";
 import { ArrowLeft, Star } from "lucide-react-native";
 import { useEffect, useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useExercises } from "@/contexts/ExercisesContext";
 
 export default function ExerciseDetailScreen() {
     const { id } = useLocalSearchParams();
+    const { exercises, favorites, handleSetFavorites } = useExercises();
     const [exercise, setExercise] = useState<Exercise | null>(null);
     const [isFavorited, setIsFavorited] = useState(false);
 
     // Load Exercise Data
     useEffect(() => {
-        const exercises = getAllExercises();
         const foundExercise = exercises.find(ex => ex.id === Number(id));
         setExercise(foundExercise || null);
     }, [id]);
 
     // Load Favorite Status
     useEffect(() => {
-        const loadFavoriteStatus = async () => {
-            try {
-                const storedFavorites = await AsyncStorage.getItem("@yoke-favoritedExercises");
-                if (storedFavorites && exercise) {
-                    const favorites = new Set(JSON.parse(storedFavorites));
-                    setIsFavorited(favorites.has(exercise.name));
-                }
-            } catch (error) {
-                console.error("Failed to load favorite status:", error);
-            }
-        };
-
-        loadFavoriteStatus();
-    }, [exercise]);
+        if(exercise) {
+            setIsFavorited(favorites.has(exercise.id));
+        }
+    }, [exercise, favorites]);
 
     // Toggle Favorite Status
     const toggleFavorite = async () => {
         if (!exercise) return;
 
-        try {
-            const storedFavorites = await AsyncStorage.getItem("@yoke-favoritedExercises");
-            let favorites = new Set<string>();
-            
-            if (storedFavorites) {
-                favorites = new Set(JSON.parse(storedFavorites));
-            }
+        const newFavorites = new Set(favorites);
 
-            if (favorites.has(exercise.name)) {
-                favorites.delete(exercise.name);
-            } else {
-                favorites.add(exercise.name);
-            }
-
-            await AsyncStorage.setItem("@yoke-favoritedExercises", JSON.stringify(Array.from(favorites)));
-            setIsFavorited(!isFavorited);
-
-            // Trigger a refresh of the library screen when going back
-            router.setParams({ favoriteUpdated: Date.now().toString() });
-        } catch (error) {
-            console.error("Failed to toggle favorite:", error);
+        if(newFavorites.has(exercise.id)) {
+            newFavorites.delete(exercise.id)
+            handleSetFavorites(newFavorites);
+        }
+        else {
+            handleSetFavorites(newFavorites.add(exercise.id));
         }
     };
 
