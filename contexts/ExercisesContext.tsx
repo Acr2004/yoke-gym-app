@@ -5,7 +5,12 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 type ExerciseContextType = {
     exercises: Exercise[];
     favorites: Set<number>;
+    recentExercises: number[];
+    popularExercises: number[];
     handleSetFavorites: (newFavorites: Set<number>) => void;
+    handleSetRecents: (newRecents: number[]) => void;
+    selectedExercise: Exercise | null;
+    handleSetSelectedExercise: (exercise: Exercise) => void;
 };
 
 const ExercisesContext = createContext<ExerciseContextType | null>(null);
@@ -13,14 +18,30 @@ const ExercisesContext = createContext<ExerciseContextType | null>(null);
 export const ExercisesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [exercises, setExercises] = useState<Exercise[]>([]);
     const [favorites, setFavorites] = useState<Set<number>>(new Set);
+    const [recentExercises, setRecentExercises] = useState<number[]>([]);
+    const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
+
+    const popularExercises = [
+        212, 213, 215, 216, 238, 271, 276, 300, 341, 344, 
+    ];
 
     async function handleSetFavorites(newFavorites: Set<number>) {
         await AsyncStorage.setItem("@yoke-favoritedExercises", JSON.stringify(Array.from(newFavorites)));
         setFavorites(newFavorites);
     }
 
+    async function handleSetRecents(newRecents: number[]) {
+        await AsyncStorage.setItem("@yoke-recentExercises", JSON.stringify(newRecents));
+        setRecentExercises(newRecents);
+    }
+
+    async function handleSetSelectedExercise(exercise: Exercise) {
+        setSelectedExercise(exercise);
+    }
+
+    // Load Exercises, Favorites and Recents
     useEffect(() => {
-        const loadFavorites = async () => {
+        const loadData = async () => {
             const exercisesJSON = getAllExercises();
             setExercises(exercisesJSON);
 
@@ -29,16 +50,33 @@ export const ExercisesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
                 if (storedFavorites) {
                     setFavorites(new Set(JSON.parse(storedFavorites)));
                 }
-            } catch (error) {
+            }
+            catch (error) {
                 console.error("Failed to load favorites:", error);
+            }
+
+            try {
+                const storedRecents = await AsyncStorage.getItem("@yoke-recentExercises");
+                if (storedRecents) {
+                    setRecentExercises(JSON.parse(storedRecents));
+                }
+            }
+            catch (error) {
+                console.error("Failed to load recents:", error);
             }
         };
     
-        loadFavorites();
+        loadData();
     }, []);
 
     return (
-        <ExercisesContext.Provider value={{ exercises, favorites, handleSetFavorites }}>
+        <ExercisesContext.Provider
+            value={{
+                exercises, favorites, recentExercises, popularExercises,
+                handleSetFavorites, handleSetRecents,
+                selectedExercise, handleSetSelectedExercise,
+            }}
+        >
             {children}
         </ExercisesContext.Provider>
     );

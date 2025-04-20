@@ -1,47 +1,37 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import { useLocalSearchParams, Stack, router } from "expo-router";
-import { Exercise, getAllExercises } from "@/api/exercises";
+import { Stack, router } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import { ArrowLeft, Star } from "lucide-react-native";
 import { useEffect, useState } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useExercises } from "@/contexts/ExercisesContext";
 
 export default function ExerciseDetailScreen() {
-    const { id } = useLocalSearchParams();
-    const { exercises, favorites, handleSetFavorites } = useExercises();
-    const [exercise, setExercise] = useState<Exercise | null>(null);
+    const { favorites, handleSetFavorites, selectedExercise } = useExercises();
     const [isFavorited, setIsFavorited] = useState(false);
-
-    // Load Exercise Data
-    useEffect(() => {
-        const foundExercise = exercises.find(ex => ex.id === Number(id));
-        setExercise(foundExercise || null);
-    }, [id]);
 
     // Load Favorite Status
     useEffect(() => {
-        if(exercise) {
-            setIsFavorited(favorites.has(exercise.id));
+        if(selectedExercise) {
+            setIsFavorited(favorites.has(selectedExercise.id));
         }
-    }, [exercise, favorites]);
+    }, [selectedExercise, favorites]);
 
     // Toggle Favorite Status
     const toggleFavorite = async () => {
-        if (!exercise) return;
+        if (!selectedExercise) return;
 
         const newFavorites = new Set(favorites);
 
-        if(newFavorites.has(exercise.id)) {
-            newFavorites.delete(exercise.id)
+        if(newFavorites.has(selectedExercise.id)) {
+            newFavorites.delete(selectedExercise.id)
             handleSetFavorites(newFavorites);
         }
         else {
-            handleSetFavorites(newFavorites.add(exercise.id));
+            handleSetFavorites(newFavorites.add(selectedExercise.id));
         }
     };
 
-    if (!exercise) {
+    if (!selectedExercise) {
         return (
             <View style={styles.container}>
                 <Text style={styles.errorText}>Exercise not found</Text>
@@ -77,16 +67,16 @@ export default function ExerciseDetailScreen() {
             <View style={styles.content}>
                 {/* Title Section */}
                 <View style={styles.titleSection}>
-                    <Text style={styles.title}>{exercise.name}</Text>
+                    <Text style={styles.title}>{selectedExercise.name}</Text>
                     <View style={styles.titleTags}>
                         <View style={[styles.pillTag, { backgroundColor: Colors.dark.primary + '20' }]}>
                             <Text style={styles.pillTagText}>
-                                {exercise.bodyPart.charAt(0).toUpperCase() + exercise.bodyPart.slice(1)}
+                                {selectedExercise.bodyPart.charAt(0).toUpperCase() + selectedExercise.bodyPart.slice(1)}
                             </Text>
                         </View>
                         <View style={[styles.pillTag, { backgroundColor: Colors.dark.primary + '20' }]}>
                             <Text style={styles.pillTagText}>
-                                {exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}
+                                {selectedExercise.difficulty.charAt(0).toUpperCase() + selectedExercise.difficulty.slice(1)}
                             </Text>
                         </View>
                     </View>
@@ -95,7 +85,7 @@ export default function ExerciseDetailScreen() {
                 {/* Description */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Description</Text>
-                    <Text style={styles.description}>{exercise.description}</Text>
+                    <Text style={styles.description}>{selectedExercise.description}</Text>
                 </View>
 
                 {/* Muscles */}
@@ -104,13 +94,13 @@ export default function ExerciseDetailScreen() {
                     <View style={styles.muscleRow}>
                         <Text style={styles.muscleLabel}>Target:</Text>
                         <Text style={styles.muscleText}>
-                            {exercise.target.charAt(0).toUpperCase() + exercise.target.slice(1)}
+                            {selectedExercise.target.charAt(0).toUpperCase() + selectedExercise.target.slice(1)}
                         </Text>
                     </View>
                     <View style={styles.muscleRow}>
                         <Text style={styles.muscleLabel}>Secondary:</Text>
                         <Text style={styles.muscleText}>
-                            {exercise.secondaryMuscles
+                            {selectedExercise.secondaryMuscles
                                 .map(muscle => muscle.charAt(0).toUpperCase() + muscle.slice(1))
                                 .join(", ")}
                         </Text>
@@ -121,14 +111,14 @@ export default function ExerciseDetailScreen() {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Equipment</Text>
                     <Text style={styles.equipmentText}>
-                        {exercise.equipment.charAt(0).toUpperCase() + exercise.equipment.slice(1)}
+                        {selectedExercise.equipment.charAt(0).toUpperCase() + selectedExercise.equipment.slice(1)}
                     </Text>
                 </View>
 
                 {/* Instructions */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Instructions</Text>
-                    {exercise.instructions.map((instruction, index) => (
+                    {selectedExercise.instructions.map((instruction, index) => (
                         <View key={index} style={styles.instructionItem}>
                             <Text style={styles.instructionNumber}>{index + 1}.</Text>
                             <Text style={styles.instructionText}>{instruction}</Text>

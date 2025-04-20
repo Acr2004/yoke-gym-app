@@ -1,9 +1,9 @@
 import { Text, View, ScrollView, TouchableOpacity, StyleSheet, TextInput, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import { useEffect, useRef, useState } from "react";
 import { Search, ChevronRight, Dumbbell, Plus, Filter, Star, Clock, TrendingUp } from "lucide-react-native";
-import { Exercise, getAllExercises } from "@/api/exercises";
+import { Exercise } from "@/api/exercises";
 import { Colors } from "@/constants/Colors";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useExercises } from "@/contexts/ExercisesContext";
 
 export default function LibraryScreen() {
@@ -19,14 +19,14 @@ export default function LibraryScreen() {
     // Filters
     const [activeFastFilter, setActiveFastFilter] = useState<"all" | "favorites" | "recents" | "populars">("all");
 
-    const { exercises, favorites, handleSetFavorites } = useExercises();
+    const { exercises, favorites, recentExercises, popularExercises, handleSetFavorites, handleSetRecents, handleSetSelectedExercise } = useExercises();
     
     // Fast Filters
     const categories = [
-        { name: "All Exercises", count: 554, icon: Dumbbell },
+        { name: "All Exercises", count: exercises.length, icon: Dumbbell },
         { name: "Favorites", count: favorites.size, icon: Star },
-        { name: "Recent", count: 8, icon: Clock },
-        { name: "Popular", count: 24, icon: TrendingUp },
+        { name: "Recent", count: recentExercises.length, icon: Clock },
+        { name: "Popular", count: popularExercises.length, icon: TrendingUp },
     ];
 
     function handleClickFastFilter(categoryName: string) {
@@ -55,10 +55,10 @@ export default function LibraryScreen() {
                 filteredExercises = exercises.filter((ex: Exercise) => favorites.has(ex.id));
                 break;
             case "recents":
-                // Aplica a lógica de exercícios recentes
+                filteredExercises = exercises.filter((ex: Exercise) => recentExercises.includes(ex.id));
                 break;
             case "populars":
-                // Aplica a lógica de exercícios populares
+                filteredExercises = exercises.filter((ex: Exercise) => popularExercises.includes(ex.id));
                 break;
             default:
                 break;
@@ -70,7 +70,19 @@ export default function LibraryScreen() {
             filteredExercises = filteredExercises.filter((exercise: Exercise) => exercise.name.toLowerCase().includes(query));
         }
 
-        filteredExercises.sort((a: Exercise, b: Exercise) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        if(activeFastFilter !== "recents") {
+            filteredExercises.sort((a: Exercise, b: Exercise) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+        }
+        else {
+            filteredExercises.sort((a: Exercise, b: Exercise) => {
+                const indexA = recentExercises.indexOf(a.id);
+                const indexB = recentExercises.indexOf(b.id);
+        
+                return indexA - indexB;
+            });
+        
+            filteredExercises.reverse();
+        }
 
         setPage(1);
         setAllLoaded(false);
@@ -81,7 +93,7 @@ export default function LibraryScreen() {
         if(initialExercises.length >= filteredExercises.length) {
             setAllLoaded(true);
         }
-    }, [activeFastFilter, searchQuery, favorites]);
+    }, [activeFastFilter, searchQuery, favorites, recentExercises]);
 
     // Load more 50 Exercises from the List
     const loadMoreExercises = () => {
@@ -97,10 +109,10 @@ export default function LibraryScreen() {
                     filteredExercises = exercises.filter((ex: Exercise) => favorites.has(ex.id));
                     break;
                 case "recents":
-                    // TODO RECENTS
+                    filteredExercises = exercises.filter((ex: Exercise) => recentExercises.includes(ex.id));
                     break;
                 case "populars":
-                    // TODO POPULARS
+                    filteredExercises = exercises.filter((ex: Exercise) => popularExercises.includes(ex.id));
                     break;
                 default:
                     break;
@@ -111,7 +123,20 @@ export default function LibraryScreen() {
                 filteredExercises = filteredExercises.filter((exercise: Exercise) => exercise.name.toLowerCase().includes(query));
             }
 
-            filteredExercises.sort((a: Exercise, b: Exercise) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+            if(activeFastFilter !== "recents") {
+                filteredExercises.sort((a: Exercise, b: Exercise) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+            }
+            else {
+                filteredExercises.sort((a: Exercise, b: Exercise) => {
+                    const indexA = recentExercises.indexOf(a.id);
+                    const indexB = recentExercises.indexOf(b.id);
+            
+                    return indexA - indexB;
+                });
+            
+                // E agora inverter para ficar do mais recente para o mais antigo
+                filteredExercises.reverse();
+            }
 
             const endIndex = (page + 1) * 50
             const newExercises = filteredExercises.slice(0, endIndex);
@@ -212,7 +237,24 @@ export default function LibraryScreen() {
                     <TouchableOpacity 
                         key={exercise.id} 
                         style={styles.exerciseItem}
-                        onPress={() => router.push(`/exercise/${exercise.id}`)}
+                        onPress={() => {
+                            let newRecents = recentExercises.slice();
+
+                            if(newRecents.includes(exercise.id)) {
+                                newRecents = newRecents.filter((id) => id !== exercise.id);
+                            }
+
+                            newRecents.push(exercise.id);
+
+                            if (newRecents.length > 10) {
+                                newRecents.shift();
+                            }
+
+                            handleSetRecents(newRecents);
+                            handleSetSelectedExercise(exercise);
+
+                            router.push(`/exercise/${exercise.id}`);
+                        }}
                     >
                         {/* Favorite Icon */}
                         <TouchableOpacity

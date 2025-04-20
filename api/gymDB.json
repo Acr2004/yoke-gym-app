@@ -10342,7 +10342,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "pull-up bar",
-    "id": 513,
+    "id": 512,
     "name": "Dead Hang (Two Arms)",
     "target": "grip endurance",
     "secondaryMuscles": ["lats", "shoulders", "upper back"],
@@ -10359,7 +10359,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "pull-up bar",
-    "id": 514,
+    "id": 513,
     "name": "Single Arm Dead Hang",
     "target": "grip strength / endurance",
     "secondaryMuscles": ["lats", "shoulders", "core", "upper back"],
@@ -10376,7 +10376,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "pull-up bar",
-    "id": 515,
+    "id": 514,
     "name": "Towel Hang / Pull-Up",
     "target": "crushing grip",
     "secondaryMuscles": ["lats", "biceps", "back"],
@@ -10393,7 +10393,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "fat gripz",
-    "id": 516,
+    "id": 515,
     "name": "Fat Grip Training",
     "target": "open hand grip",
     "secondaryMuscles": [
@@ -10411,7 +10411,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "plate",
-    "id": 517,
+    "id": 516,
     "name": "Plate Pinch Hold",
     "target": "pinch grip",
     "secondaryMuscles": ["thumb adductors"],
@@ -10430,7 +10430,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "dumbbell",
-    "id": 518,
+    "id": 517,
     "name": "Farmer's Walk (Grip Focus)",
     "target": "grip endurance",
     "secondaryMuscles": ["traps", "core", "legs", "back"],
@@ -10447,7 +10447,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "dumbbell",
-    "id": 519,
+    "id": 518,
     "name": "Suitcase Carry (Grip/Core Focus)",
     "target": "grip endurance",
     "secondaryMuscles": ["obliques", "core stabilizers", "traps"],
@@ -10464,7 +10464,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "barbell",
-    "id": 520,
+    "id": 519,
     "name": "Barbell Wrist Curl",
     "target": "forearm flexors",
     "secondaryMuscles": [],
@@ -10483,7 +10483,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "barbell",
-    "id": 521,
+    "id": 520,
     "name": "Barbell Reverse Wrist Curl",
     "target": "forearm extensors",
     "secondaryMuscles": [],
@@ -10502,7 +10502,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "dumbbell",
-    "id": 522,
+    "id": 521,
     "name": "Dumbbell Wrist Curl",
     "target": "forearm flexors",
     "secondaryMuscles": [],
@@ -10521,7 +10521,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "dumbbell",
-    "id": 523,
+    "id": 522,
     "name": "Dumbbell Reverse Wrist Curl",
     "target": "forearm extensors",
     "secondaryMuscles": [],
@@ -10540,7 +10540,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "hand gripper",
-    "id": 524,
+    "id": 523,
     "name": "Hand Gripper Training",
     "target": "crushing grip",
     "secondaryMuscles": [],
@@ -10558,7 +10558,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "fingerboard",
-    "id": 525,
+    "id": 524,
     "name": "Fingerboard Hangs",
     "target": "finger strength",
     "secondaryMuscles": ["grip endurance", "shoulders", "back"],
@@ -10577,7 +10577,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "rice bucket",
-    "id": 526,
+    "id": 525,
     "name": "Rice Bucket Training",
     "target": "hand/finger strength",
     "secondaryMuscles": ["wrist strength"],
@@ -10597,7 +10597,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "kettlebell",
-    "id": 527,
+    "id": 526,
     "name": "Bottoms-Up Kettlebell Press/Carry",
     "target": "grip strength",
     "secondaryMuscles": ["wrist stability", "shoulder stability", "core"],
@@ -10615,7 +10615,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "barbell",
-    "id": 528,
+    "id": 527,
     "name": "Barbell Hold for Time",
     "target": "grip endurance",
     "secondaryMuscles": ["traps", "back"],
@@ -10633,7 +10633,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "pinch block",
-    "id": 529,
+    "id": 528,
     "name": "Pinch Block Lift / Hold",
     "target": "pinch grip",
     "secondaryMuscles": ["thumb adductors"],
@@ -10650,7 +10650,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "rope",
-    "id": 530,
+    "id": 529,
     "name": "Rope Climb",
     "target": "grip strength / endurance",
     "secondaryMuscles": ["back", "biceps", "lats", "core"],
@@ -10668,7 +10668,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "wrist roller",
-    "id": 531,
+    "id": 530,
     "name": "Wrist Roller",
     "target": "forearm endurance",
     "secondaryMuscles": ["shoulders"],
@@ -10686,7 +10686,7 @@
   {
     "bodyPart": "forearms",
     "equipment": "sledgehammer",
-    "id": 532,
+    "id": 531,
     "name": "Sledgehammer/Macebell Levering",
     "target": "wrist strength",
     "secondaryMuscles": ["shoulders", "grip"],
@@ -10705,7 +10705,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "resistance band",
-    "id": 533,
+    "id": 532,
     "name": "Band Pull-Apart (Variations)",
     "target": "rhomboids",
     "secondaryMuscles": ["posterior deltoids", "middle traps", "rotator cuff"],
@@ -10727,7 +10727,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "resistance band",
-    "id": 534,
+    "id": 533,
     "name": "Banded Face Pull",
     "target": "posterior deltoids",
     "secondaryMuscles": ["rhomboids", "middle traps", "rotator cuff"],
@@ -10747,7 +10747,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "body weight",
-    "id": 535,
+    "id": 534,
     "name": "YTWL Shoulder Exercise",
     "target": "scapular stabilizers",
     "secondaryMuscles": ["traps", "rhomboids", "rotator cuff"],
@@ -10766,7 +10766,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "resistance band",
-    "id": 536,
+    "id": 535,
     "name": "External Rotation (Band/Cable - Elbow Tucked)",
     "target": "rotator cuff",
     "secondaryMuscles": ["posterior deltoids"],
@@ -10787,7 +10787,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "dumbbell",
-    "id": 537,
+    "id": 536,
     "name": "External Rotation (Side Lying)",
     "target": "rotator cuff",
     "secondaryMuscles": ["posterior deltoids"],
@@ -10807,7 +10807,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "resistance band",
-    "id": 538,
+    "id": 537,
     "name": "Internal Rotation (Band/Cable - Elbow Tucked)",
     "target": "rotator cuff",
     "secondaryMuscles": ["subscapularis", "pectoralis major"],
@@ -10828,7 +10828,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "body weight",
-    "id": 539,
+    "id": 538,
     "name": "Scapular Retractions",
     "target": "rhomboids",
     "secondaryMuscles": ["middle traps"],
@@ -10847,7 +10847,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "body weight",
-    "id": 540,
+    "id": 539,
     "name": "Scapular Protraction (Scap Push-ups)",
     "target": "serratus anterior",
     "secondaryMuscles": ["pectorals"],
@@ -10865,7 +10865,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "pull-up bar",
-    "id": 541,
+    "id": 540,
     "name": "Scapular Depression (Scap Pull-ups)",
     "target": "lower traps",
     "secondaryMuscles": ["lats", "rhomboids"],
@@ -10884,7 +10884,7 @@
   {
     "bodyPart": "neck",
     "equipment": "body weight",
-    "id": 542,
+    "id": 541,
     "name": "Chin Tucks",
     "target": "deep neck flexors",
     "secondaryMuscles": [],
@@ -10904,7 +10904,7 @@
   {
     "bodyPart": "neck",
     "equipment": "body weight",
-    "id": 543,
+    "id": 542,
     "name": "Deep Neck Flexor Activation",
     "target": "deep neck flexors",
     "secondaryMuscles": [],
@@ -10924,7 +10924,7 @@
   {
     "bodyPart": "hips",
     "equipment": "body weight",
-    "id": 544,
+    "id": 543,
     "name": "Hip Flexor Stretch (Variations)",
     "target": "hip flexors",
     "secondaryMuscles": ["quadriceps"],
@@ -10941,7 +10941,7 @@
   {
     "bodyPart": "hips",
     "equipment": "body weight",
-    "id": 545,
+    "id": 544,
     "name": "Piriformis Stretch (Variations)",
     "target": "piriformis",
     "secondaryMuscles": ["glutes", "hip external rotators"],
@@ -10958,7 +10958,7 @@
   {
     "bodyPart": "glutes",
     "equipment": "body weight",
-    "id": 546,
+    "id": 545,
     "name": "Glute Activation Drills",
     "target": "glutes",
     "secondaryMuscles": ["core", "hamstrings", "hip abductors"],
@@ -10978,7 +10978,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "wall",
-    "id": 547,
+    "id": 546,
     "name": "Wall Slides / Wall Angels",
     "target": "scapular mobility",
     "secondaryMuscles": ["rotator cuff", "upper back"],
@@ -10998,7 +10998,7 @@
   {
     "bodyPart": "upper back",
     "equipment": "body weight",
-    "id": 548,
+    "id": 547,
     "name": "Blackburns",
     "target": "scapular stabilizers",
     "secondaryMuscles": [
@@ -11022,7 +11022,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "dumbbell",
-    "id": 549,
+    "id": 548,
     "name": "Powell Raise",
     "target": "rotator cuff",
     "secondaryMuscles": ["posterior deltoids"],
@@ -11043,7 +11043,7 @@
   {
     "bodyPart": "shoulders",
     "equipment": "dumbbell",
-    "id": 550,
+    "id": 549,
     "name": "Cuban Press",
     "target": "rotator cuff",
     "secondaryMuscles": ["deltoids", "traps"],
@@ -11062,7 +11062,7 @@
   {
     "bodyPart": "back",
     "equipment": "foam roller",
-    "id": 551,
+    "id": 550,
     "name": "Thoracic Extension over Foam Roller",
     "target": "thoracic spine mobility",
     "secondaryMuscles": ["upper back"],
@@ -11083,7 +11083,7 @@
   {
     "bodyPart": "spine",
     "equipment": "body weight",
-    "id": 552,
+    "id": 551,
     "name": "Cat-Cow",
     "target": "spinal mobility",
     "secondaryMuscles": ["core", "neck", "shoulders"],
@@ -11101,7 +11101,7 @@
   {
     "bodyPart": "core",
     "equipment": "body weight",
-    "id": 553,
+    "id": 552,
     "name": "Bird Dog (Stability Focus)",
     "target": "core stabilizers",
     "secondaryMuscles": ["glutes", "erector spinae", "shoulders"],
