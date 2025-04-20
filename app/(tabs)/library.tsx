@@ -5,6 +5,7 @@ import { Exercise } from "@/api/exercises";
 import { Colors } from "@/constants/Colors";
 import { router, Stack } from "expo-router";
 import { useExercises } from "@/contexts/ExercisesContext";
+import FilterModal from "@/components/FilterModal";
 
 export default function LibraryScreen() {
     // Search
@@ -18,9 +19,15 @@ export default function LibraryScreen() {
     const [displayedExercises, setDisplayedExercises] = useState<Exercise[]>([]);
     // Filters
     const [activeFastFilter, setActiveFastFilter] = useState<"all" | "favorites" | "recents" | "populars">("all");
-
+    // Exercises Context
     const { exercises, favorites, recentExercises, popularExercises, handleSetFavorites, handleSetRecents, handleSetSelectedExercise } = useExercises();
     
+    const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
+    const [activeFilters, setActiveFilters] = useState({
+        bodyParts: [""],
+        difficulties: [""],
+    });
+
     // Fast Filters
     const categories = [
         { name: "All Exercises", count: exercises.length, icon: Dumbbell },
@@ -64,6 +71,19 @@ export default function LibraryScreen() {
                 break;
         }
 
+        // Filters
+        if (activeFilters.bodyParts.length > 0) {
+            filteredExercises = filteredExercises.filter((ex: Exercise) => 
+                activeFilters.bodyParts.includes(ex.bodyPart)
+            );
+        }
+        
+        if (activeFilters.difficulties.length > 0) {
+            filteredExercises = filteredExercises.filter((ex: Exercise) => 
+                activeFilters.difficulties.includes(ex.difficulty)
+            );
+        }
+
         // Search Query
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase();
@@ -93,7 +113,7 @@ export default function LibraryScreen() {
         if(initialExercises.length >= filteredExercises.length) {
             setAllLoaded(true);
         }
-    }, [activeFastFilter, searchQuery, favorites, recentExercises]);
+    }, [activeFastFilter, activeFilters, searchQuery, favorites, recentExercises]);
 
     // Load more 50 Exercises from the List
     const loadMoreExercises = () => {
@@ -117,6 +137,19 @@ export default function LibraryScreen() {
                 default:
                     break;
             }
+
+            // Filters
+            if (activeFilters.bodyParts.length > 0) {
+                filteredExercises = filteredExercises.filter((ex: Exercise) => 
+                    activeFilters.bodyParts.includes(ex.bodyPart)
+                );
+            }
+            
+            if (activeFilters.difficulties.length > 0) {
+                filteredExercises = filteredExercises.filter((ex: Exercise) => 
+                    activeFilters.difficulties.includes(ex.difficulty)
+                );
+            }
     
             if (searchQuery.trim()) {
                 const query = searchQuery.toLowerCase();
@@ -134,7 +167,6 @@ export default function LibraryScreen() {
                     return indexA - indexB;
                 });
             
-                // E agora inverter para ficar do mais recente para o mais antigo
                 filteredExercises.reverse();
             }
 
@@ -196,6 +228,7 @@ export default function LibraryScreen() {
                 </View>
                 <TouchableOpacity 
                     style={styles.filterButton}
+                    onPress={() => setIsFilterModalVisible(true)}
                 >
                     <Filter size={20} color={Colors.dark.primary} />
                 </TouchableOpacity>
@@ -289,6 +322,14 @@ export default function LibraryScreen() {
                     </TouchableOpacity>
                 ))}
             </View>
+
+            {/* Filter Modal */}
+            <FilterModal
+                visible={isFilterModalVisible}
+                onClose={() => setIsFilterModalVisible(false)}
+                filters={activeFilters}
+                setActiveFilters={setActiveFilters}
+            />
         </ScrollView>
     );
 }
