@@ -11,6 +11,7 @@ type ExerciseContextType = {
     handleSetRecents: (newRecents: number[]) => void;
     selectedExercise: Exercise | null;
     handleSetSelectedExercise: (exercise: Exercise) => void;
+    handleAddExercise: (newExercise: Omit<Exercise, "id">) => Promise<void>;
 };
 
 const ExercisesContext = createContext<ExerciseContextType | null>(null);
@@ -42,7 +43,7 @@ export const ExercisesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     // Load Exercises, Favorites and Recents
     useEffect(() => {
         const loadData = async () => {
-            const exercisesJSON = getAllExercises();
+            const exercisesJSON = await getAllExercises();
             setExercises(exercisesJSON);
 
             try {
@@ -69,12 +70,35 @@ export const ExercisesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         loadData();
     }, []);
 
+    // Update Exercises
+    async function handleAddExercise(newExercise: Omit<Exercise, "id">) {
+        try {
+            const storedExercises = await AsyncStorage.getItem("@yoke-customExercises");
+            let customExercises: Exercise[] = storedExercises ? JSON.parse(storedExercises) : [];
+    
+            const newId = Math.max(...exercises.map(ex => ex.id), ...customExercises.map(ex => ex.id)) + 1;
+    
+            const completeExercise: Exercise = {
+                id: newId,
+                ...newExercise
+            };
+
+            customExercises.push(completeExercise);
+            await AsyncStorage.setItem("@yoke-customExercises", JSON.stringify(customExercises));
+
+            const updatedExercises = [...exercises, completeExercise];
+            setExercises(updatedExercises);
+        } catch (error) {
+            console.error("Failed to add exercise:", error);
+        }
+    }    
+    
     return (
         <ExercisesContext.Provider
             value={{
                 exercises, favorites, recentExercises, popularExercises,
                 handleSetFavorites, handleSetRecents,
-                selectedExercise, handleSetSelectedExercise,
+                selectedExercise, handleSetSelectedExercise, handleAddExercise,
             }}
         >
             {children}

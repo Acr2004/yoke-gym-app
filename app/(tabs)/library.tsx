@@ -6,6 +6,7 @@ import { Colors } from "@/constants/Colors";
 import { router, Stack } from "expo-router";
 import { useExercises } from "@/contexts/ExercisesContext";
 import FilterModal from "@/components/FilterModal";
+import AddExerciseModal from "@/components/AddExerciseModal";
 
 export default function LibraryScreen() {
     // Search
@@ -19,13 +20,18 @@ export default function LibraryScreen() {
     const [displayedExercises, setDisplayedExercises] = useState<Exercise[]>([]);
     // Filters
     const [activeFastFilter, setActiveFastFilter] = useState<"all" | "favorites" | "recents" | "populars">("all");
+    // Add Exercise
+    const [isAddModalVisible, setIsAddModalVisible] = useState(false);
     // Exercises Context
-    const { exercises, favorites, recentExercises, popularExercises, handleSetFavorites, handleSetRecents, handleSetSelectedExercise } = useExercises();
+    const { exercises, favorites, recentExercises, popularExercises, handleSetFavorites, handleSetRecents, handleSetSelectedExercise, handleAddExercise } = useExercises();
     
     const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
-    const [activeFilters, setActiveFilters] = useState({
-        bodyParts: [""],
-        difficulties: [""],
+    const [activeFilters, setActiveFilters] = useState<{
+        bodyParts: string[];
+        difficulties: string[];
+    }>({
+        bodyParts: [],
+        difficulties: [],
     });
 
     // Fast Filters
@@ -50,7 +56,11 @@ export default function LibraryScreen() {
             default:
                 setActiveFastFilter("all");
         }
-    }  
+    }
+
+    async function handleSaveExercise(newExercise: Omit<Exercise, 'id'>) {
+        await handleAddExercise(newExercise);
+    }
 
     // Get first 50 Filtered Exercises from the List
     useEffect(() => {
@@ -113,7 +123,7 @@ export default function LibraryScreen() {
         if(initialExercises.length >= filteredExercises.length) {
             setAllLoaded(true);
         }
-    }, [activeFastFilter, activeFilters, searchQuery, favorites, recentExercises]);
+    }, [exercises, activeFastFilter, activeFilters, searchQuery, favorites, recentExercises]);
 
     // Load more 50 Exercises from the List
     const loadMoreExercises = () => {
@@ -260,6 +270,7 @@ export default function LibraryScreen() {
                     {/* Add Exercise Button */}
                     <TouchableOpacity 
                         style={styles.addButton}
+                        onPress={() => setIsAddModalVisible(true)}
                     >
                         <Plus size={16} color={Colors.dark.white} />
                     </TouchableOpacity>
@@ -329,6 +340,13 @@ export default function LibraryScreen() {
                 onClose={() => setIsFilterModalVisible(false)}
                 filters={activeFilters}
                 setActiveFilters={setActiveFilters}
+            />
+
+            {/* Add Exercise Modal */}
+            <AddExerciseModal
+                visible={isAddModalVisible}
+                onClose={() => setIsAddModalVisible(false)}
+                onSave={handleSaveExercise}
             />
         </ScrollView>
     );
