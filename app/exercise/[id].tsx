@@ -102,7 +102,7 @@ export default function ExerciseDetailScreen() {
                         <Text style={styles.muscleText}>
                             {selectedExercise.secondaryMuscles
                                 .map(muscle => muscle.charAt(0).toUpperCase() + muscle.slice(1))
-                                .join(", ")}
+                                .join(", ") || 'No Secondary Muscles'}
                         </Text>
                     </View>
                 </View>
@@ -118,12 +118,12 @@ export default function ExerciseDetailScreen() {
                 {/* Instructions */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Instructions</Text>
-                    {selectedExercise.instructions.map((instruction, index) => (
+                    {selectedExercise.instructions.length > 0 ? selectedExercise.instructions.map((instruction, index) => (
                         <View key={index} style={styles.instructionItem}>
                             <Text style={styles.instructionNumber}>{index + 1}.</Text>
                             <Text style={styles.instructionText}>{instruction}</Text>
                         </View>
-                    ))}
+                    )) : <Text style={styles.equipmentText}>No Instructions</Text>}
                 </View>
             </View>
         </ScrollView>

@@ -1,5 +1,5 @@
 import { Text, View, ScrollView, TouchableOpacity, StyleSheet, Modal } from "react-native";
-import { X, Check } from "lucide-react-native";
+import { X, Check , Filter} from "lucide-react-native";
 import { Colors } from "@/constants/Colors";
 
 export interface ExerciseFilters {
@@ -62,13 +62,25 @@ export default function FilterModal({ visible, onClose, filters, setActiveFilter
         <View style={styles.modalView}>
           {/* Header */}
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>Filter Exercises</Text>
+            <View style={styles.headerContent}>
+              <View style={styles.headerIcon}>
+                <Filter size={24} color={Colors.dark.primary} />
+              </View>
+              <View>
+                <Text style={styles.modalTitle}>Filter Exercises</Text>
+                <Text style={styles.modalSubtitle}>Filter by Body Part and Difficulty</Text>
+              </View>
+            </View>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-              <X size={24} color={Colors.dark.white} />
+              <X size={24} color={Colors.dark.text} />
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={styles.filtersContainer}>
+          <ScrollView 
+            style={styles.filtersContainer}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.filtersContent}
+          >
             {/* Body Parts Section */}
             <View style={styles.filterSection}>
               <Text style={styles.sectionTitle}>Body Part</Text>
@@ -159,7 +171,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark.background,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -168,27 +179,55 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    maxHeight: "80%",
+    maxHeight: '80%',
   },
   modalHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
+    padding: 20,
     paddingBottom: 16,
     borderBottomWidth: 1,
     borderBottomColor: Colors.dark.tertiary,
   },
+  headerContent: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  headerIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
+    backgroundColor: Colors.dark.secondary,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
   modalTitle: {
     color: Colors.dark.primary,
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "700",
+  },
+  modalSubtitle: {
+    color: Colors.dark.text,
+    fontSize: 14,
+    marginTop: 2,
   },
   closeButton: {
-    padding: 4,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: Colors.dark.secondary,
+    alignItems: "center",
+    justifyContent: "center",
   },
   filtersContainer: {
-    maxHeight: "70%",
+    paddingHorizontal: 20,
+    flexGrow: 0,
+    flexShrink: 1,
+  },
+  filtersContent: {
+    paddingVertical: 20,
   },
   filterSection: {
     marginBottom: 24,
@@ -230,8 +269,7 @@ const styles = StyleSheet.create({
   actionButtons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 16,
-    paddingTop: 16,
+    padding: 16,
     borderTopWidth: 1,
     borderTopColor: Colors.dark.tertiary,
   },

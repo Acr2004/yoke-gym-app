@@ -269,7 +269,7 @@ export default function LibraryScreen() {
                     <Text style={styles.sectionTitle}>Exercises</Text>
                     {/* Add Exercise Button */}
                     <TouchableOpacity 
-                        style={styles.addButton}
+                        style={[styles.addButton, { minWidth: 52, paddingHorizontal: 16 }]}
                         onPress={() => setIsAddModalVisible(true)}
                     >
                         <Plus size={16} color={Colors.dark.white} />
@@ -394,6 +394,10 @@ const styles = StyleSheet.create({
         marginRight: 8,
         alignItems: "center",
         minWidth: 100,
+        height: 90,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
     },
     categoryName: {
         color: Colors.dark.white,
